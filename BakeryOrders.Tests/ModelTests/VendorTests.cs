@@ -53,6 +53,20 @@ namespace BakeryOrders.Tests
       Vendor result = Vendor.Find(2);
 
       Assert.AreEqual(testVendor2, result);
+    }
+
+    [TestMethod]
+    public void Delete_DeleteSpecificVendor_VendorList()
+    {
+      Vendor testVendor1 = new Vendor("name1", "description1");
+      Vendor testVendor2 = new Vendor("name2", "description2");
+      Vendor testVendor3 = new Vendor("name3", "description3");
+      List<Vendor> expected = new List<Vendor> { testVendor1, testVendor3 };
+
+      Vendor.Delete(2);
+      List<Vendor> result = Vendor.GetAll();
+
+      CollectionAssert.AreEqual(expected, result);
     }    
   }
 }
