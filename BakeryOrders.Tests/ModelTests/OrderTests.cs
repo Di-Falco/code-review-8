@@ -40,12 +40,22 @@ namespace BakeryOrders.Tests
     [TestMethod]
     public void GetAll_ReturnAllOrders_OrderList()
     {
-      Order testOrder1 = new Order("title", "description", "date");
-      Order testOrder2 = new Order("title", "description", "date");
+      Order testOrder1 = new Order("title1", "description1", "date1");
+      Order testOrder2 = new Order("title2", "description2", "date2");
       List<Order> expected = new List<Order> {testOrder1, testOrder2};
       List<Order> actual = Order.GetAll();
 
       CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Find_ReturnSpecificOrder_Order()
+    {
+      Order testOrder1 = new Order("title1", "description1", "date1");
+      Order testOrder2 = new Order("title2", "description2", "date2");
+      Order result = Order.Find(2);
+
+      Assert.AreEqual(testOrder2, result);
     }
   }
 }
