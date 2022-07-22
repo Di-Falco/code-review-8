@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Job Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="container">
+    @using BakeryOrders.Models
+    <h1>Vendor Info</h1>
+    <h2>@Model["vendor"].Name</h2>
+    <p>@Model["vendor"].Description</p>
+    @if(@Model["orders"].Count == 0){
+      <h4>There are no orders for this vendor</h4>
+    }
+    @{string bgStyle = "";}
+    @foreach (Order order in Model["orders"]) {
+      @if (order.Fulfilled) {
+        bgStyle="background:#bbffbb;";
+      } else if (!order.Fulfilled) {
+        bgStyle="background:#ffbbbb;";
+      }
+      <div style=@bgStyle>
+      <h3>@order.Title</h3>
+      <h5>@order.Description</h5>
+      <h5>@order.Date</h5>
+      </div>
+    }
+    <a href='/vendors/@Model["vendor"].Id/orders/new'><button>Add New Order</button></a>
+    <br>
+    <a href='/vendors'><button>Return to Vendors</button></a>
+    <a href='/'><button>Return Home</button></a>
+  </div>
+  </body>
+</html>
