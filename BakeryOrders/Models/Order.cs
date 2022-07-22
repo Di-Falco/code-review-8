@@ -10,6 +10,7 @@ namespace BakeryOrders.Models
     public string Description { get; set; }
     public string Date { get; set; }
     public int Id { get; set; }
+    public bool Complete { get; set; }
 
     public Order(string title, string description, string date)
     {
@@ -18,6 +19,17 @@ namespace BakeryOrders.Models
       Date = date;
       _orders.Add(this);
       Id = _orders.Count;
+      Complete = false;
+    }
+
+    public static List<Order> GetAll()
+    {
+      return _orders;
+    }
+
+    public static void ClearAll()
+    {
+      _orders.Clear();
     }
   }
 }
