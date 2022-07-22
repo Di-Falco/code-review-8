@@ -6,8 +6,14 @@ using BakeryOrders.Models;
 namespace BakeryOrders.Tests
 {
   [TestClass]
-  public class VendorTests
+  public class VendorTests : IDisposable
   {
+
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
+
     [TestMethod]
     public void VendorConstructor_CreatesVendorObject_Vendor()
     {
@@ -28,6 +34,15 @@ namespace BakeryOrders.Tests
       Assert.AreEqual(description, resultDescription);
     }
 
+    [TestMethod]
+    public void GetAll_ReturnAllVendor_VendorList()
+    {
+      Vendor testVendor1 = new Vendor("name1", "description1");
+      Vendor testVendor2 = new Vendor("name2", "description2");
+      List<Vendor> expected = new List<Vendor> {testVendor1, testVendor2};
+      List<Vendor> actual = Vendor.GetAll();
 
+      CollectionAssert.AreEqual(expected, actual);
+    }
   }
 }

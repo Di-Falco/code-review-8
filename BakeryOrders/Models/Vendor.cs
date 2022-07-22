@@ -17,5 +17,15 @@ namespace BakeryOrders.Models
       _vendors.Add(this);
       Orders = new List<Order>{};
     }
+
+    public static List<Vendor> GetAll()
+    {
+      return _vendors;
+    }
+
+    public static void ClearAll()
+    {
+      _vendors.Clear();
+    }
   }
 }
