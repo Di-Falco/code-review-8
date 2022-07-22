@@ -7,20 +7,24 @@
   </head>
   <body>
     @using BakeryOrders.Models
-    <h1>Vendor Orders:</h1>
-    <h2>@Model["vendor"].Name</h2>
-    <h5>Order:</h5>
+    <h1>Order Info</h1>
+    <h2>@Model["order"].Title</h2>
+    <p>@Model["order"].Description</p>
+    <h5>Items:</h5>
+    @if(@Model["items"].Count == 0){
+      <h4>There are no items for this order</h4>
+    }
     <ol>
-      @foreach (Order order in Model["vendor"]) {
-        <li>
-          @Model["orders"].Title<br>
-          @Model["orders"].Description<br>
-          @Model["orders"].Date
-        </li>
-      }
-    </ol>
+    @foreach (Item item in Model["items"]) {
 
-    <a href='/categories/@Model["category"].Id/items/new'>Add another item</a>
-    <a href='/categories'>View all items</a>
+        <li><strong>@item.Name</strong><br>
+            @item.Quantity<br>
+            @item.Buy()</li>
+    }
+    </ol>
+    <a href='/vendors/@Model["vendor"].Id/order/@Model["order"].Id/items/new'><button>Add new item to order</button></a>
+    <a href='/vendors/@Model["vendor"].Id/order/@Model["order"].Id/items/complete'><button>Complete this order</button></a>
+    <a href='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/items/new'>Add another item</a>
+    <a href='/vendors/@Model["vendor"].Id/orders'>View all orders</a>
   </body>
 </html>

@@ -15,6 +15,7 @@
       <h4>There are no orders for this vendor</h4>
     }
     @{string bgStyle = "";}
+    <ol>
     @foreach (Order order in Model["orders"]) {
       @if (order.Fulfilled) {
         bgStyle="background:#bbffbb;";
@@ -22,13 +23,13 @@
         bgStyle="background:#ffbbbb;";
       }
       <div style=@bgStyle>
-      <ol>
         <li><strong>@order.Title</strong><br>
             @order.Description<br>
             @order.Date</li>
-      <a href=""><button>View Order Details</button></a>
+      <a href='/vendors/@Model["vendor"].Id/orders/@order.Id/items'><button>View Order Details</button></a>
       </div>
     }
+    </ol>
     <a href='/vendors/@Model["vendor"].Id/orders/new'><button>Add New Order</button></a>
     <br><br>
     <a href='/vendors'><button>Return to Vendors</button></a>

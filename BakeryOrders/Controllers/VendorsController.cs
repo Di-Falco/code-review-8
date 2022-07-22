@@ -24,7 +24,7 @@ namespace BakeryOrders.Controllers
     [HttpPost("/vendors")]
     public ActionResult Create(string name, string description)
     {
-      Vendor newVendor = new Vendor(name, description);
+      Vendor vendor = new Vendor(name, description);
       return RedirectToAction("Index");
     }
 
@@ -32,10 +32,10 @@ namespace BakeryOrders.Controllers
     public ActionResult Show(int id)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
-      Vendor foundVendor = Vendor.Find(id);
-      List<Order> vendorOrders = foundVendor.Orders;
-      model.Add("vendor", foundVendor);
-      model.Add("orders", vendorOrders);
+      Vendor vendor = Vendor.Find(id);
+      List<Order> orders = vendor.Orders;
+      model.Add("vendor", vendor);
+      model.Add("orders", orders);
       return View(model);
     }
 
@@ -43,12 +43,12 @@ namespace BakeryOrders.Controllers
     public ActionResult Show(int vendorId, string orderTitle, string orderDescription, string orderDate)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
-      Vendor foundVendor = Vendor.Find(vendorId);
-      Order newOrder = new Order(orderTitle, orderDescription, orderDate);
-      foundVendor.AddOrder(newOrder);
-      List<Order> vendorOrders = foundVendor.Orders;
-      model.Add("vendor", foundVendor);
-      model.Add("orders", vendorOrders);
+      Vendor vendor = Vendor.Find(vendorId);
+      Order order = new Order(orderTitle, orderDescription, orderDate);
+      vendor.AddOrder(order);
+      List<Order> orders = vendor.Orders;
+      model.Add("vendor", vendor);
+      model.Add("orders", orders);
       return View("Show", model);
     }
   }
