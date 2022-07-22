@@ -15,5 +15,21 @@ namespace BakeryOrders.Tests
       Assert.AreEqual(typeof(Order), testOrder.GetType());
     }
 
+    [TestMethod]
+    public void OrderConstructor_ReturnsTitleDescriptionAndDate_String()
+    {
+      string title = "test title";
+      string description = "test description";
+      string date = "test date";
+      Order testOrder = new Order(title, description, date);
+      string resultTitle = testOrder.Title;
+      string resultDescription = testOrder.Description;
+      string resultDate = testOrder.Date;
+      
+      Assert.AreEqual(title, resultTitle);
+      Assert.AreEqual(description, resultDescription);
+      Assert.AreEqual(date, resultDate);
+    }
+
   }
 }
