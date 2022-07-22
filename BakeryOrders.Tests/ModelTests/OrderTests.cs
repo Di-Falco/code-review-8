@@ -57,5 +57,19 @@ namespace BakeryOrders.Tests
 
       Assert.AreEqual(testOrder2, result);
     }
+
+    [TestMethod]
+    public void Delete_DeleteSpecificOrder_OrderList()
+    {
+      Order testOrder1 = new Order("title1", "description1", "date1");
+      Order testOrder2 = new Order("title2", "description2", "date2");
+      Order testOrder3 = new Order("title3", "description3", "date3");
+      List<Order> expected = new List<Order> { testOrder1, testOrder3 };
+
+      Order.Delete(2);
+      List<Order> result = Order.GetAll();
+
+      CollectionAssert.AreEqual(expected, result);
+    }
   }
 }

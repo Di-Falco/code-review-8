@@ -36,5 +36,13 @@ namespace BakeryOrders.Models
     {
       return _orders[id-1];
     }
+
+    public static void Delete(int id)
+    {
+      _orders.RemoveAt(id-1);
+      for(int i=id-1; i<_orders.Count; i++){
+        _orders[i].Id--;
+      }
+    }
   }
 }
