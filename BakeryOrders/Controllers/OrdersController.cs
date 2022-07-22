@@ -12,7 +12,11 @@ namespace BakeryOrders.Controllers
     public ActionResult New(int vendorId)
     {
       Vendor vendor = Vendor.Find(vendorId);
-      return View(vendor);
+      List<Item> items = Item.GetAll();
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("vendor", vendor);
+      model.Add("items", items);
+      return View(model);
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderId}/items")]
