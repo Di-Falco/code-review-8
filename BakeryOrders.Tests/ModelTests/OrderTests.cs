@@ -82,12 +82,26 @@ namespace BakeryOrders.Tests
     }
 
     [TestMethod]
-    public void Complete_ToggleCompleteValue_True()
+    public void Complete_ToggleCompleteValue_False()
     {
       Order testOrder = new Order("title", "description", "date");
       testOrder.Complete();
+      testOrder.Complete();      
 
-      Assert.AreEqual(true, testOrder.Fulfilled);
+      Assert.AreEqual(false, testOrder.Fulfilled);
     }    
+
+    [TestMethod]
+    public void AddItem_AddsItemToItemsList_ItemList()
+    {
+      Order testOrder = new Order("name", "description", "date");
+      Item testItem = new Item(1.00, "test item");
+      List<Item> expected = new List<Item> { testItem };
+
+      testOrder.AddItem(testItem);
+      List<Item> actual = testOrder.GetItems();
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
   }
 }

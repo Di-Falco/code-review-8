@@ -49,14 +49,19 @@ namespace BakeryOrders.Models
 
     public void Complete()
     {
-      switch(this.Fulfilled){
+      switch(Fulfilled){
       case(true):
-        this.Fulfilled = false;
+        Fulfilled = false;
         break;
       case(false):
-        this.Fulfilled = true;
+        Fulfilled = true;
         break;
       }
+    }
+
+    public List<Item> GetItems()
+    {
+      return Items;
     }
 
     public void AddItem(Item item)

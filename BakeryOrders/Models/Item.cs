@@ -16,18 +16,23 @@ namespace BakeryOrders.Models
     public double Price { get; set; }
     public string Name { get; set; }
     public int Quantity { get; set; }
-    private static List<Item> _menu = new List<Item> {baguette, sourdough, eclair, macaron, escargo, cigarette}; 
-    public static Item[] items= new Item[] {baguette, sourdough, eclair, macaron, escargo, cigarette}; 
-    public static Dictionary<Item, int> purchase = new Dictionary<Item, int>();
+    private static List<Item> _menu = new List<Item> {baguette, sourdough, eclair, macaron, escargo, cigarette};
 
-    public Item(double price, string name) {
+    public Item(double price, string name)
+    {
       Price = price;
       Name = name;
       Quantity = 0;
     }
 
-    public double Buy (int quantity, double price) {
-      return (quantity * price);
+    public void AddQuantity(int quantity)
+    {
+      Quantity = quantity;
+    }
+
+    public double Buy()
+    {
+      return (Quantity * Price);
     }
 
     public static List<Item> GetAll()
