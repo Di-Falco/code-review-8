@@ -27,5 +27,10 @@ namespace BakeryOrders.Models
     {
       _vendors.Clear();
     }
+
+    public static Vendor Find(int id)
+    {
+      return _vendors[id-1];
+    }
   }
 }
