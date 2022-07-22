@@ -71,5 +71,14 @@ namespace BakeryOrders.Tests
 
       CollectionAssert.AreEqual(expected, result);
     }
+
+    [TestMethod]
+    public void Complete_ToggleCompleteValue_True()
+    {
+      Order testOrder = new Order("title", "description", "date");
+      testOrder.Complete();
+
+      Assert.AreEqual(true, testOrder.Fulfilled);
+    }
   }
 }
