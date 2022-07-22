@@ -16,13 +16,11 @@
     }
     <ol>
     @foreach (Item item in Model["items"]) {
-
         <li><strong>@item.Name</strong><br>
             @item.Quantity<br>
             @item.Buy()</li>
     }
     </ol>
-    <a href='/vendors/@Model["vendor"].Id/order/@Model["order"].Id/items/new'><button>Add new item to order</button></a>
     <a href='/vendors/@Model["vendor"].Id/order/@Model["order"].Id/items/complete'><button>Complete this order</button></a>
     <a href='/vendors/@Model["vendor"].Id/orders'><button>View all orders</button></a>
   </body>

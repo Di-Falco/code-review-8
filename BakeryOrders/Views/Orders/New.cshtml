@@ -12,17 +12,17 @@
     <form action='/vendors/@Model["vendor"].Id/orders' method="post">
       <input id="vendorId" name="vendorId" type="hidden" value='@Model["vendor"].Id'>
       <div class="row justify-content-left">
-      <strong><label class="col-4" for="orderTitle">Order Title</label></strong>
+      <strong class="col-2"><label for="orderTitle">Order Title</label></strong>
       <input class="col-6" id="orderTitle" name="orderTitle" type="text">
       </div>
       <br>
       <div class="row justify-content-left">
-      <strong><label class="col-4" for="orderDescription">Description</label></strong>
+      <strong class="col-2"><label for="orderDescription">Description</label></strong>
       <input class="col-6" id="orderDescription" name="orderDescription" type="text">
       </div>
       <br>
       <div class="row justify-content-left">      
-      <strong><label class="col-4" for="orderDate">Delivery Date</label></strong>
+      <strong class="col-2"><label for="orderDate">Delivery Date</label></strong>
       <input class="col-6" id="orderDate" name="orderDate" type="text">
       </div>
       <br>
@@ -30,9 +30,9 @@
         <div class="row justify-content-left">
           <label class="col-3" for='@item.Name'>@item.Name</label>
           <input class="col-1" id="@item.Name" name="@item.Name" type="number">
-        </div
-        <br>
+        </div>
       }
+      @int[6] quantities = new int[6] { baguette, sourdough, eclair, macaron, escargot, cigarette }
 
       <button type="submit">Add Order</button>
     </form>
