@@ -11,6 +11,7 @@ namespace BakeryOrders.Models
     public string Date { get; set; }
     public int Id { get; set; }
     public bool Fulfilled { get; set; }
+    public List<Item> Items { get; set; }
 
     public Order(string title, string description, string date)
     {
@@ -20,6 +21,7 @@ namespace BakeryOrders.Models
       _orders.Add(this);
       Id = _orders.Count;
       Fulfilled = false;
+      Items = new List<Item> {};
     }
 
     public static List<Order> GetAll()
@@ -55,6 +57,11 @@ namespace BakeryOrders.Models
         this.Fulfilled = true;
         break;
       }
+    }
+
+    public void AddItem(Item item)
+    {
+      Items.Add(item);
     }
   }
 }

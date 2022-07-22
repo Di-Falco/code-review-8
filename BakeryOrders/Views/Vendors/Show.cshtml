@@ -22,13 +22,15 @@
         bgStyle="background:#ffbbbb;";
       }
       <div style=@bgStyle>
-      <h3>@order.Title</h3>
-      <h5>@order.Description</h5>
-      <h5>@order.Date</h5>
+      <ol>
+        <li><strong>@order.Title</strong><br>
+            @order.Description<br>
+            @order.Date</li>
+      <a href=""><button>View Order Details</button></a>
       </div>
     }
     <a href='/vendors/@Model["vendor"].Id/orders/new'><button>Add New Order</button></a>
-    <br>
+    <br><br>
     <a href='/vendors'><button>Return to Vendors</button></a>
     <a href='/'><button>Return Home</button></a>
   </div>
