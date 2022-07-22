@@ -42,5 +42,10 @@ namespace BakeryOrders.Models
         _vendors[i].Id--;
       }
     }
+
+    public void AddOrder(Order order)
+    {
+      Orders.Add(order);
+    }
   }
 }

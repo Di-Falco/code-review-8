@@ -67,6 +67,19 @@ namespace BakeryOrders.Tests
       List<Vendor> result = Vendor.GetAll();
 
       CollectionAssert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void AddOrder_AddOrderObjectToVendorObject_OrderList()
+    {
+      Vendor testVendor = new Vendor("name", "description");
+      Order testOrder = new Order("title", "description", "date");
+      List<Order> expected = new List<Order> { testOrder };
+
+      testVendor.AddOrder(testOrder);
+      List<Order> actual = testVendor.Orders;
+
+      CollectionAssert.AreEqual(expected, actual);      
     }    
   }
 }
