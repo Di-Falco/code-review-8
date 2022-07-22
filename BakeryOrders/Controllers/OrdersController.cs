@@ -20,7 +20,7 @@ namespace BakeryOrders.Controllers
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderId}/items")]
-    public ActionResult Show(int vendorId , int orderId )
+    public ActionResult Show(int vendorId , int orderId)
     {
       Vendor vendor = Vendor.Find(vendorId);
       Order order = Order.Find(orderId);
@@ -30,6 +30,6 @@ namespace BakeryOrders.Controllers
       model.Add("order" , order);
       model.Add("items", items);
       return View(model);
-    }    
+    }
   }
 }

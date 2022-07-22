@@ -14,15 +14,21 @@
     @if(@Model["items"].Count == 0){
       <h4>There are no items for this order</h4>
     }
+    @{ double totalCost = 0.0; }
     <ol>
     @foreach (Item item in Model["items"]) {
       <li><strong>@item.Name</strong><br>
           <em>Quantity: @item.Quantity</em><br>
-          <em>Total Cost: $@item.Buy().ToString("0.00")</em>
+          <em>Cost: $@item.Buy().ToString("0.00")</em>
+          @{ totalCost+=@item.Buy(); } 
       </li>
     }
     </ol>
-    <a href='/vendors/@Model["vendor"].Id/order/@Model["order"].Id/items/complete'><button>Complete this order</button></a>
+    <h5>Total Cost: $@totalCost.ToString("0.00")</h5>
+
+    <form action='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/complete' method='post'>
+      <button>Complete this order</button>
+    </form>
     <a href='/vendors/@Model["vendor"].Id/orders'><button>View all orders</button></a>
   </body>
 </html>
