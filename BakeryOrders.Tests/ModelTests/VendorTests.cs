@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using BakeryOrders.Models;
 
-namespace BakeryOrders.TestClass
+namespace BakeryOrders.Tests
 {
   [TestClass]
   public class VendorTests
@@ -28,6 +28,6 @@ namespace BakeryOrders.TestClass
       Assert.AreEqual(description, resultDescription);
     }
 
-    
+
   }
 }
