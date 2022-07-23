@@ -7,6 +7,7 @@
   </head>
   <body>
     @using BakeryOrders.Models
+  <div class="container">
     <h1>Order Info</h1>
     <h2>@Model["order"].Title</h2>
     <p>@Model["order"].Description</p>
@@ -30,5 +31,6 @@
       <button>Complete this order</button>
     </form>
     <a href='/vendors/@Model["vendor"].Id/orders'><button>View all orders</button></a>
+  </div>
   </body>
 </html>

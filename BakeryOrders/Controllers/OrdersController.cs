@@ -31,5 +31,20 @@ namespace BakeryOrders.Controllers
       model.Add("items", items);
       return View(model);
     }
+
+    [HttpPost("/vendors/{vendorId}/orders/{orderId}/complete")]
+    public ActionResult Complete(int orderId)
+    {
+      Order order = Order.Find(orderId);
+      order.Complete();
+      return View();
+    }
+
+    [HttpPost("/vendors/{vendorId}/orders/{orderId}/delete")]
+    public ActionResult Delete(int orderId)
+    {
+      Order.Delete(orderId);
+      return View();
+    }   
   }
 }

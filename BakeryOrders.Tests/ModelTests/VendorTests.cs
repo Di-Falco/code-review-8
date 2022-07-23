@@ -73,7 +73,7 @@ namespace BakeryOrders.Tests
     public void AddOrder_AddOrderObjectToVendorObject_OrderList()
     {
       Vendor testVendor = new Vendor("name", "description");
-      Order testOrder = new Order("title", "description", "date");
+      Order testOrder = new Order("title", "description", "date",0,0,0,0,0,0);
       List<Order> expected = new List<Order> { testOrder };
 
       testVendor.AddOrder(testOrder);
