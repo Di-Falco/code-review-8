@@ -30,7 +30,7 @@ viewing an order displays each item, its quantity, cast, and the toal cost of al
 
 ## Known Bugs
 
-* Some buttons do not yet have functionality
+* None
 
 ## License
 
