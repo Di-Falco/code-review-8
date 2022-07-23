@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Vendor Wholesale</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
-  </head>
-  <body>
-  <div class="container">
-    <h1>Wholesale Vendor/Order Home</h1>
-    <a href="/vendors"><button>View Vendors</button></a>
-    <a href="/vendors/new"><button>Add a New Vendor</button></a>
-  </div>
-  </body>
-</html>
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+<div class="row justify-content-center">
+<a class="col-2" href="/vendors"><button>View Vendors</button></a>
+<a class="col-2" href="/vendors/new"><button>Add a New Vendor</button></a>
+</div>
+</div>

@@ -25,7 +25,7 @@ namespace BakeryOrders.Controllers
       Vendor vendor = Vendor.Find(vendorId);
       Order order = Order.Find(orderId);
       List<Item> items = order.GetItems();
-      Dictionary <string,object> model = new Dictionary<string,object>();
+      Dictionary <string, object> model = new Dictionary<string, object>();
       model.Add("vendor", vendor);
       model.Add("order" , order);
       model.Add("items", items);
@@ -40,11 +40,16 @@ namespace BakeryOrders.Controllers
       return View();
     }
 
-    [HttpPost("/vendors/{vendorId}/orders/{orderId}/delete")]
-    public ActionResult Delete(int orderId)
+    [HttpPost("/vendors/{vendorId}/delete/orders/{orderId}")]
+    public ActionResult Delete(int vendorId, int orderId)
     {
       Order.Delete(orderId);
-      return View();
+      Vendor vendor = Vendor.Find(vendorId);
+      vendor.DeleteOrder(orderId);
+      Dictionary <string, object> model = new Dictionary<string, object>();
+      model.Add("vendor", vendorId);
+      model.Add("order" , orderId);      
+      return View(model);
     }   
   }
 }

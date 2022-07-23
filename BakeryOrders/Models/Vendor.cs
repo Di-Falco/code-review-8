@@ -47,5 +47,10 @@ namespace BakeryOrders.Models
     {
       Orders.Add(order);
     }
+
+    public void DeleteOrder(int orderId)
+    {
+      Orders.RemoveAt(orderId-1);
+    }
   }
 }

@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Vendor Orders</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  </head>
-  <body>
-    @using BakeryOrders.Models
-  <div class="container">
-    <h1>Order Info</h1>
-    <h2>@Model["order"].Title</h2>
-    <p>@Model["order"].Description</p>
-    <h5>Items:</h5>
-    @if(@Model["items"].Count == 0){
-      <h4>There are no items for this order</h4>
-    }
-    @{ double totalCost = 0.0; }
-    <ol>
-    @foreach (Item item in Model["items"]) {
-      <li><strong>@item.Name</strong><br>
-          <em>Quantity: @item.Quantity</em><br>
-          <em>Cost: $@item.Buy().ToString("0.00")</em>
-          @{ totalCost+=@item.Buy(); } 
-      </li>
-    }
-    </ol>
-    <h5>Total Cost: $@totalCost.ToString("0.00")</h5>
+@{
+  Layout = "_Layout";
+}
+@using BakeryOrders.Models
+<div class="container">
+<h1>Order Info</h1>
+<h2>@Model["order"].Title</h2>
+<p>@Model["order"].Description</p>
+<h5>Items:</h5>
+@if(@Model["items"].Count == 0){
+  <h4>There are no items for this order</h4>
+}
+@{ double totalCost = 0.0; }
+<ol>
+@foreach (Item item in Model["items"]) {
+  <li><strong>@item.Name</strong><br>
+      <em>Quantity: @item.Quantity</em><br>
+      <em>Cost: $@item.Buy().ToString("0.00")</em>
+      @{ totalCost+=@item.Buy(); } 
+  </li>
+}
+</ol>
+<h5>Total Cost: $@totalCost.ToString("0.00")</h5>
 
-    <form action='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/complete' method='post'>
-      <button>Complete this order</button>
-    </form>
-    <a href='/vendors/@Model["vendor"].Id/orders'><button>View all orders</button></a>
-  </div>
-  </body>
-</html>
+<form action='/vendors/@Model["vendor"].Id/orders/@Model["order"].Id/complete' method='post'>
+  <button>Complete this order</button>
+</form>
+<a href='/vendors/@Model["vendor"].Id/orders'><button>View all orders</button></a>
+</div>

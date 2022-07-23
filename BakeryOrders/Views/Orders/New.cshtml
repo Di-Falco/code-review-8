@@ -1,40 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  </head>
-  <body>
-    @using BakeryOrders.Models
-  <div class="container">
-    <h1>Add a new order for @Model["vendor"].Name</h1>
-    <form action='/vendors/@Model["vendor"].Id/orders' method="post">
-      <input id="vendorId" name="vendorId" type="hidden" value='@Model["vendor"].Id'>
-      <div class="row justify-content-left">
-      <strong class="col-2"><label for="orderTitle">Order Title</label></strong>
-      <input class="col-6" id="orderTitle" name="orderTitle" type="text">
-      </div>
-      <br>
-      <div class="row justify-content-left">
-      <strong class="col-2"><label for="orderDescription">Description</label></strong>
-      <input class="col-6" id="orderDescription" name="orderDescription" type="text">
-      </div>
-      <br>
-      <div class="row justify-content-left">      
-      <strong class="col-2"><label for="orderDate">Delivery Date</label></strong>
-      <input class="col-6" id="orderDate" name="orderDate" type="text">
-      </div>
-      <br>
-      @foreach (Item item in Model["items"]) {
-        <div class="row justify-content-left">
-          <label class="col-3" for='@item.Name'>@item.Name</label>
-          <input class="col-1" id="@item.Name" name="@item.Name" type="number">
-        </div>
-      }
-
-      <button type="submit">Add Order</button>
-    </form>
+@{
+  Layout = "_Layout";
+}
+@using BakeryOrders.Models
+<div class="container">
+<h1>Add a new order for @Model["vendor"].Name</h1>
+<form action='/vendors/@Model["vendor"].Id/orders' method="post">
+  <input id="vendorId" name="vendorId" type="hidden" value='@Model["vendor"].Id'>
+  <div class="row justify-content-left">
+  <strong class="col-2"><label for="orderTitle">Order Title</label></strong>
+  <input class="col-6" id="orderTitle" name="orderTitle" type="text">
   </div>
-  </body>
-</html>
+  <br>
+  <div class="row justify-content-left">
+  <strong class="col-2"><label for="orderDescription">Description</label></strong>
+  <input class="col-6" id="orderDescription" name="orderDescription" type="text">
+  </div>
+  <br>
+  <div class="row justify-content-left">      
+  <strong class="col-2"><label for="orderDate">Delivery Date</label></strong>
+  <input class="col-6" id="orderDate" name="orderDate" type="text">
+  </div>
+  <br>
+  @foreach (Item item in Model["items"]) {
+    <div class="row justify-content-left">
+      <label class="col-3" for='@item.Name'>@item.Name</label>
+      <input class="col-1" id="@item.Name" name="@item.Name" type="number">
+    </div>
+  }
+
+  <button type="submit">Add Order</button>
+</form>
+</div>

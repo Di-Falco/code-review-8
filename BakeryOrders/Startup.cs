@@ -27,6 +27,7 @@ namespace BakeryOrders
     {
       app.UseDeveloperExceptionPage();
       app.UseRouting();
+      app.UseStaticFiles();
 
       app.UseEndpoints(routes =>
       {
@@ -35,7 +36,7 @@ namespace BakeryOrders
 
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("Hello World!");
+        await context.Response.WriteAsync("error");
       });
     }
   }
