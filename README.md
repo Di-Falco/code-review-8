@@ -19,7 +19,7 @@ From home, Pierre can view a list of his vendors or add new vendors. Adding a ne
 
 Viewing a vendor allows Pierre to further view that vendor's orders. Orders can be added from the vendor page and have optional input fields for basic order information and any number of six purchase options.
 
-viewing an order displays each item, its quantity, cast, and the toal cost of all items. orders can be set to "complete" from their page.
+viewing an order displays each item, its quantity, cost, and the toal cost of all items. orders can be set to "complete" from their page.
 
 ## Setup/Installation Requirements
 

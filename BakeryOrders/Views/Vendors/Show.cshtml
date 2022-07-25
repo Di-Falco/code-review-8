@@ -10,7 +10,6 @@
   <h4>There are no orders for this vendor</h4>
 }
 @{string bgStyle = "";}
-<ol>
 @foreach (Order order in Model["orders"]) {
   @if (order.Fulfilled) {
     bgStyle="complete";
@@ -25,7 +24,7 @@
   <form action='/vendors/@Model["vendor"].Id/delete/orders/@order.Id' method='post'>
     <button type='submit'>Delete this Order</button>
   </form>
-  </div>
+  </div><br>
 }
 </ol>
 <a href='/vendors/@Model["vendor"].Id/orders/new'><button>Add New Order</button></a>
